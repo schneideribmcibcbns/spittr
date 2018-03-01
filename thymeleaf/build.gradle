@@ -1,0 +1,46 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+repositories {
+    mavenCentral()
+}
+
+war {
+	baseName = 'spittr'
+}
+
+eclipse {
+	wtp {
+		component {
+			contextPath = 'spittr'
+		}
+	}
+}
+
+dependencies {
+    compile("org.springframework:spring-webmvc:${springVersion}")
+    compile("org.springframework:spring-jdbc:${springVersion}")
+    compile("org.springframework.security:spring-security-web:${springSecurityVersion}")
+    compile("org.springframework.security:spring-security-config:${springSecurityVersion}")
+    compile("com.h2database:h2:${h2Version}")
+    compile("org.hibernate:hibernate-validator:${hibernateValidatorVersion}")
+    compile("org.apache.commons:commons-lang3:3.7")
+    compile("org.slf4j:slf4j-simple:${slf4jSimpleVersion}")
+    compile("org.thymeleaf:thymeleaf-spring4:${thymeleafVersion}")
+    compile("org.springframework.data:spring-data-redis:1.8.10.RELEASE")
+
+    compileOnly('org.projectlombok:lombok:1.16.8')
+    
+    
+    providedCompile("javax.servlet:javax.servlet-api:${servletApiVersion}")
+
+    
+    testCompile("junit:junit:${junitVersion}")
+    //testCompile "junit:junit-dep:$junitVersion"
+    //testCompile "org.hamcrest:hamcrest-library:$hamcrestVersion"
+    testCompile("org.mockito:mockito-core:${mockitoVersion}")
+    testCompile("org.springframework:spring-test:${springVersion}")
+    
+}
+

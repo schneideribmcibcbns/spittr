@@ -1,0 +1,50 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+repositories {
+    mavenCentral()
+}
+
+war {
+	baseName = 'spittr'
+}
+
+eclipse {
+	wtp {
+		component {
+			contextPath = 'spittr'
+		}
+	}
+}
+
+dependencies {
+	compile("org.springframework:spring-context:${springVersion}")
+	compile("org.springframework:spring-aop:${springVersion}")
+	compile("org.springframework:spring-web:${springVersion}")
+    compile("org.aspectj:aspectjweaver:${aspectJVersion}")
+    compile("org.springframework:spring-webmvc:${springVersion}")
+    compile("org.springframework:spring-jdbc:${springVersion}")
+    compile("com.h2database:h2:${h2Version}")
+    compile("org.apache.commons:commons-lang3:3.7")
+    compile("javax.validation:validation-api:${javaxValidationAptVersion}")
+    compile("org.slf4j:slf4j-simple:${slf4jSimpleVersion}")
+    compile("org.hibernate:hibernate-validator:${hibernateValidatorVersion}")
+    compileOnly('org.projectlombok:lombok:1.16.8')
+    
+    
+    compile("javax.servlet:jstl:${jstlVersion}")
+    providedCompile("javax.servlet:javax.servlet-api:${servletApiVersion}")
+    providedCompile("javax.servlet.jsp:jsp-api:${jspApiVersion}")
+    providedCompile("javax.el:javax.el-api:${jspElVersion}")
+
+
+    
+    testCompile("junit:junit:${junitVersion}")
+    //testCompile "junit:junit-dep:$junitVersion"
+    //testCompile "org.hamcrest:hamcrest-library:$hamcrestVersion"
+    testCompile("org.mockito:mockito-core:${mockitoVersion}")
+    testCompile("org.springframework:spring-test:${springVersion}")
+    
+}
+
